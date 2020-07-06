@@ -12,6 +12,27 @@ class ExpensesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
+      theme: ThemeData(
+        primaryColor: Colors.purple,
+        accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
+      ),
     );
   }
 }
@@ -49,9 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _transactions.add(newTransaction);
     });
 
-  Navigator.of(context).pop();
+    Navigator.of(context).pop();
   }
-
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
@@ -92,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _openTransactionFormModal(context),
+        //backgroundColor: Theme.of(context).primaryColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
